@@ -1,28 +1,33 @@
-body{
-    margin: 0;
-padding: 0;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-text-align: center;
-background-color: #000000;
-background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
-min-height: 100vh;
-color: white;
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	background-color: #000000;
+	background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+	min-height: 100vh;
+	color: white;
 
 }
+
+
+
 *,
 *::after,
 *::before {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-header{
-margin: 2rem 0;
+
+header {
+	margin: 2rem 0;
 }
+
 header h1 {
 	font-family: 'Nova Square', cursive;
 	font-size: 3rem;
@@ -33,112 +38,212 @@ header h1 {
 	margin-bottom: 1rem;
 	border-radius: 5px;
 }
-header p{
-  max-width: 50%;
-  margin: auto;
+
+header p {
+	max-width: 50%;
+	margin: auto;
 }
 
+header p {
+	max-width: 50%;
+	margin: auto;
+}
+
+h2 {
+	margin-top: 3rem;
+	margin-bottom: 2rem;
+}
 
 .main-game {
 	width: 900px;
 	height: 900px;
 	margin: auto;
 	display: grid;
-	grid-template-columns: repeat(3,1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
-}
-.local-game {
-	display: grid;
-	grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: 2rem;
+	margin: 3rem auto;
+	position: relative;
 }
 
-.top-left{
-border-right: solid white 4px;
-border-bottom: solid white 4px;
+.local-game {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	padding: 2rem;
 }
-.top-right{
-    border-left: solid white 4px;
-    border-bottom: solid white 4px;
+
+.top-left {
+	border-right: solid white 4px;
+	border-bottom: solid white 4px;
 }
-.bottom-left{
-    border-right: solid white 4px;
-    border-top: solid white 4px;
+
+.top-right {
+	border-left: solid white 4px;
+	border-bottom: solid white 4px;
 }
-.bottom-right{
-    border-left: solid white 4px;
-    border-top: solid white 4px;
+
+.bottom-left {
+	border-right: solid white 4px;
+	border-top: solid white 4px;
 }
-.top-middle{
-border-bottom: solid white 4px;
+
+.bottom-right {
+	border-left: solid white 4px;
+	border-top: solid white 4px;
 }
-.left-middle{
-border-right: solid white 4px;
+
+.top-middle {
+	border-bottom: solid white 4px;
 }
-.right-middle{
-border-left: solid white 4px;
+
+.left-middle {
+	border-right: solid white 4px;
 }
-.bottom-middle{
-border-top: solid white 4px;
+
+.right-middle {
+	border-left: solid white 4px;
 }
-.small-box{
-border-width: 1px;
-padding: 0.5rem;
+
+.bottom-middle {
+	border-top: solid white 4px;
 }
-#local-1, #result-1{
-grid-column: 1/2;
-grid-row: 1/2;
+
+.small-box {
+	border-width: 1px;
+	padding: 0.5rem;
 }
-#local-2, #result-2{
-grid-column: 2/3;
-grid-row: 1/2;
+
+#local-1,
+#result-1 {
+	grid-column: 1/2;
+	grid-row: 1/2;
 }
-#local-3, #result-3{
-grid-column: 3/4;
-grid-row: 1/2;
+
+#local-2,
+#result-2 {
+	grid-column: 2/3;
+	grid-row: 1/2;
 }
-#local-4, #result-4{
-grid-column: 1/2;
-grid-row: 2/3;
+
+#local-3,
+#result-3 {
+	grid-column: 3/4;
+	grid-row: 1/2;
 }
-#local-5, #result-5{
-grid-column: 2/3;
-grid-row: 2/3;
+
+#local-4,
+#result-4 {
+	grid-column: 1/2;
+	grid-row: 2/3;
 }
-#local-6, #result-6{
-grid-column: 3/4;
-grid-row: 2/3;
+
+#local-5,
+#result-5 {
+	grid-column: 2/3;
+	grid-row: 2/3;
 }
-#local-7, #result-7{
-grid-column: 1/2;
-grid-row: 3/4;
+
+#local-6,
+#result-6 {
+	grid-column: 3/4;
+	grid-row: 2/3;
 }
-#local-8, #result-8{
-grid-column: 2/3;
-grid-row: 3/5;
+
+#local-7,
+#result-7 {
+	grid-column: 1/2;
+	grid-row: 3/4;
 }
-#local-9, #result-9{
-grid-column: 3/4;
-grid-row: 3/5;
+
+#local-8,
+#result-8 {
+	grid-column: 2/3;
+	grid-row: 3/5;
 }
-.result{
+
+#local-9,
+#result-9 {
+	grid-column: 3/4;
+	grid-row: 3/5;
+}
+
+.result {
 	width: 100%;
 	height: 100%;
 	z-index: -1;
 }
 
-
-
-
-
-#Capa_1{
-height: 100%;
-width: 100%;
-fill: white;
+.endgame {
+	display: none;
+	width: 100%;
+	height: 50%;
+	border-radius: 20px;
+	position: absolute;
+	margin-top: 50%;
+	transform: translateY(-50%);
+	background: #fffa917d;
+	z-index: 10;
 }
-#Capa_2{
-    height: 100%;
-    width: 100%;
-    fill: white;
-    }
+
+.endgame-active {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+
+}
+
+.endgame-message {
+	font-size: 6rem;
+	text-shadow: 2px 2px #0006;
+}
+
+#reset {
+	width: 7rem;
+	padding: 0.5rem;
+}
+
+.cross-circle {
+	height: 100%;
+	width: 100%;
+	fill: white;
+	opacity: 0.5;
+}
+
+.difficulty {
+	margin-bottom: 10rem;
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.game-mode-container {
+	margin-bottom: 10rem;
+}
+
+#difficulty-display {
+	text-transform: uppercase;
+}
+
+.icon-options {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 20rem;
+	margin: auto;
+}
+
+.icon-selector {
+	height: 3rem;
+	width: 3rem;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 0.5rem;
+}
+
+.icon-active {
+	border: solid white 1px;
+}
+
+.icon {
+	height: 100%;
+}

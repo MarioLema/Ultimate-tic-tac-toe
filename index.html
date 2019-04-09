@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +12,19 @@
 
 <body>
     <header>
-        <h1>ULTIMATE TIC TAC TOE</h1>
+        <h1>TIC TAC TOE</h1>
         <p>Also known as super tic-tac-toe, strategic tic-tac-toe, meta tic-tac-toe, or tic-tac-tic-tac-toe-toe is a board game composed of nine tic-tac-toe boards arranged in a 3-by-3 grid. Players take turns playing in the smaller tic-tac-toe boards until one of them wins in the larger tic-tac-toe board. Compared to traditional tic-tac-toe, strategy in this game is conceptually more difficult. Check the rules <a href="https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe" target="_blank" rel="noopener noreferrer">here</a> </p>
+        <h2>CHOOSE YOUR WEAPON</h2>
+        <div class="icon-options">
+            <div class="icon-selector icon-active" id="cross-icon">
+                <img class="icon" src="icon-cross.png" alt="cross icon">
+            </div>
+            <div class="icon-selector" id="circle-icon">
+                <img class="icon" src="icon-circle.png" alt="circle icon">
+            </div>
+
+
+        </div>
     </header>
     <section>
         <div class="main-game" id="main-game">
@@ -127,7 +137,7 @@
             <div class="result" id="result-8"></div>
             <div class="result" id="result-9"></div>
         </div>
-        <div>
+        <div class="endgame">
             <p>wins here</p>
         </div>
     </section>
@@ -143,7 +153,7 @@
 
 
 
-    <script src="main.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
