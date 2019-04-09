@@ -146,8 +146,23 @@ const MODIFIER = {
          this.gameOver(tie);
          return;
       }
+      setTimeout(() => {
+         let mainBoardMove = DATA.openBoards.length === 0 ? DATA.openBoards[0] : DATA.openBoards[Math.floor(Math.random() * (DATA.openBoards.length - 1))];
+         this.playerMove(this.aiMove(mainBoardMove),mainBoardMove, DATA.ai);
 
-      this.playerMove(this.aiMove(), DATA.ai);
+         let win = this.checkWin(DATA.mainBoard, DATA.human);
+         let tie = this.checkTie(DATA.mainBoard);
+         if (win) {
+            this.gameOver(win);
+            return;
+         }
+         if (tie) {
+            this.gameOver(tie);
+            return;
+         }
+      }, 100);
+
+      //maybe a win check again
    },
 
    //PLACES A MOVE BOTH IN THE BOARD AND IN THE DOM AND CHECKS FOR A WIN
@@ -179,17 +194,17 @@ const MODIFIER = {
 
 
    //SELECTS A MOVE FOR THE AI DEPENDING ON THE DIFFICULTY SET
-   aiMove() {
+   aiMove(mainBoardIndex) {
       if (DATA.difficultyMode === "hard") {
-         return this.smartMove(DATA.boardCells, DATA.ai).index;
+         return this.smartMove(mainBoardIndex, DATA.ai).index;
       } else if (DATA.difficultyMode === "easy") {
-         return this.easyMove();
+         return this.easyMove(mainBoardIndex);
       } else {
          let toss = Math.random() * 2;
          if (toss > 1.2) {
-            return this.easyMove();
+            return this.easyMove(mainBoardIndex);
          } else {
-            return this.smartMove(DATA.boardCells, DATA.ai).index;
+            return this.smartMove(mainBoardIndex, DATA.ai).index;
          }
       }
 
@@ -197,8 +212,8 @@ const MODIFIER = {
 
 
    //CHOOSES A RANDOM EMPTY CELL FOR THE MOVE
-   easyMove() {
-      let emptyCells = this.emptyCells();
+   easyMove(mainBoardIndex) {
+      let emptyCells = this.emptyCells(DATA.localBoards[mainBoardIndex]);
       let random = Math.floor(Math.random() * (emptyCells.length - 1));
       return emptyCells[random];
       // return emptyCells.length <= 0 ? null : emptyCells[random];
@@ -206,9 +221,10 @@ const MODIFIER = {
 
 
    //MINMAX METHOD RESOLVES THE BEST SPOT FOR THE AI TO MOVE AND WIN
-   smartMove(board, player) {
-      let emptyCells = this.emptyCells();
+   smartMove(mainBoardIndex, player) {
 
+      let board = DATA.localBoards[mainBoardIndex];
+      let emptyCells = this.emptyCells(board);
       //checks for a winner or a tie during recursion and adds a score depending on the winner
       if (this.checkWin(board, DATA.human)) {
          return {
@@ -231,10 +247,10 @@ const MODIFIER = {
          board[emptyCells[i]] = player;
 
          if (player === DATA.ai) {
-            let result = this.smartMove(board, DATA.human);
+            let result = this.smartMove(mainBoardIndex, DATA.human);
             move.score = result.score;
          } else {
-            let result = this.smartMove(board, DATA.ai);
+            let result = this.smartMove(mainBoardIndex, DATA.ai);
             move.score = result.score;
          }
          //sets the local image of the board to the move so the next recursion will play the following move
@@ -276,10 +292,10 @@ const MODIFIER = {
    },
 
    //CREATES AN ARRAY WITH THE EMPTY CELLS IN THE BOARD
-   emptyCells() {
+   emptyCells(board) {
       let emptyCells = []
-      for (let i = 0; i < DATA.boardCells.length; i++) {
-         if (DATA.boardCells[i] !== DATA.ai && DATA.boardCells[i] !== DATA.human) emptyCells.push(i);
+      for (let i = 0; i < board.length; i++) {
+         if (board[i] !== DATA.ai && board[i] !== DATA.human) emptyCells.push(i);
       }
       return emptyCells;
    },
