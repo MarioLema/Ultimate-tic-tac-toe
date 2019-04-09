@@ -66,19 +66,23 @@ let VIEW = {
 
    // DISPLAYS THE END GAME MESSAGE
    displayEndGame(message) {
-      let result = document.querySelector(".result");
-      let resultMessage = document.querySelector(".result-message");
-      result.classList.add("result-active");
+      let result = document.querySelector(".endgame");
+      let resultMessage = document.querySelector(".endgame-message");
+      result.classList.add("endgame-active");
       resultMessage.innerHTML = message;
    },
 
    //RESETS THE VIEW FOR A NEW GAME
    resetView() {
-      let result = document.querySelector(".result");
-      result.classList.remove("result-active");
+      let result = document.querySelector(".endgame");
+      result.classList.remove("endgame-active");
       let cells = document.querySelectorAll(".cross-circle");
+      let grids = document.querySelectorAll(".result");
       for (let i = 0; i < cells.length; i++) {
          cells[i].remove();
+      }
+      for (let i = 0; i < grids.length; i++) {
+         grids[i].classList.remove(`local-win`);
       }
    },
 
@@ -112,6 +116,11 @@ let VIEW = {
          }
       }
    },
+   removeHighlight() {
+      for (let i = 0; i < DATA.mainBoard.length; i++) {
+         document.getElementById(`local-${i}`).classList.remove(`highlight`);
+      }
+   },
    localWin(player, index) {
       let el = document.getElementById(`result-${index}`);
       el.classList.add(`local-win`);
@@ -130,7 +139,7 @@ const MODIFIER = {
 
       let cell = Number(event.target.id[6]);
       let localGame = Number(event.target.id[4]);
-      
+
       if (DATA.openBoards.indexOf(localGame) === -1) return;
       if (typeof DATA.localBoards[localGame][cell] !== `number`) return;
 
@@ -148,7 +157,7 @@ const MODIFIER = {
       }
       setTimeout(() => {
          let mainBoardMove = DATA.openBoards.length === 0 ? DATA.openBoards[0] : DATA.openBoards[Math.floor(Math.random() * (DATA.openBoards.length - 1))];
-         this.playerMove(this.aiMove(mainBoardMove),mainBoardMove, DATA.ai);
+         this.playerMove(this.aiMove(mainBoardMove), mainBoardMove, DATA.ai);
 
          let win = this.checkWin(DATA.mainBoard, DATA.human);
          let tie = this.checkTie(DATA.mainBoard);
@@ -161,8 +170,6 @@ const MODIFIER = {
             return;
          }
       }, 100);
-
-      //maybe a win check again
    },
 
    //PLACES A MOVE BOTH IN THE BOARD AND IN THE DOM AND CHECKS FOR A WIN
@@ -181,7 +188,7 @@ const MODIFIER = {
       let winner = this.checkWin(DATA.localBoards[localBoard], player);
       let tie = this.checkTie(DATA.localBoards[localBoard]);
       if (winner) this.localWin(winner, localBoard);
-      if (tie) this.localWin(tie,localBoard)
+      if (tie) this.localWin(tie, localBoard)
    },
 
    //SETS THE LOCAL BOARD WITH ITS WINNER
@@ -286,8 +293,21 @@ const MODIFIER = {
 
    //RESETS BOARD AND CALLS THE RESETVIEW METHOD
    resetGame() {
-      DATA.boardCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+      DATA.mainBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+      DATA.localBoards = {
+         0: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         1: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         2: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         3: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         4: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         5: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         6: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         7: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+         8: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      };
+      DATA.openBoards = [0, 1, 2, 3, 4, 5, 6, 7, 8];
       VIEW.resetView();
+      VIEW.removeHighlight();
       document.getElementById("main-game").addEventListener('click', MODIFIER.turn, false);
    },
 
@@ -351,15 +371,15 @@ const MODIFIER = {
    checkTie(board) {
 
       let emptyCells = board.filter(x => typeof x === `number`);
-         if (emptyCells.length !== 0){
-            return false
-         }else{
-            return {
-               player: `tie`,
-               index: -1
-            };
-         }
-}
+      if (emptyCells.length !== 0) {
+         return false
+      } else {
+         return {
+            player: `tie`,
+            index: -1
+         };
+      }
+   }
 }
 
 

@@ -9,7 +9,7 @@ body {
 	text-align: center;
 	background-color: #485461;
 	background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
-	
+
 	min-height: 100vh;
 	color: white;
 
@@ -75,39 +75,47 @@ h2 {
 	width: 300px;
 }
 
-.top-left {
+.top-left,
+#result-0 {
 	border-right: solid white 4px;
 	border-bottom: solid white 4px;
 }
 
-.top-right {
+.top-right,
+#result-2 {
 	border-left: solid white 4px;
 	border-bottom: solid white 4px;
 }
 
-.bottom-left {
+.bottom-left,
+#result-6 {
 	border-right: solid white 4px;
 	border-top: solid white 4px;
 }
 
-.bottom-right {
+.bottom-right,
+#result-8 {
 	border-left: solid white 4px;
 	border-top: solid white 4px;
 }
 
-.top-middle {
+.top-middle,
+#result-1 {
 	border-bottom: solid white 4px;
 }
 
-.left-middle {
+.left-middle,
+#result-3 {
 	border-right: solid white 4px;
 }
 
-.right-middle {
+.right-middle,
+#result-5 {
 	border-left: solid white 4px;
 }
 
-.bottom-middle {
+.bottom-middle,
+#result-7 {
 	border-top: solid white 4px;
 }
 
@@ -115,7 +123,8 @@ h2 {
 	border-width: 1px;
 	padding: 0.5rem;
 }
-.local-box{
+
+.local-box {
 	display: flex;
 }
 
@@ -182,14 +191,15 @@ h2 {
 
 .endgame {
 	display: none;
-	width: 100%;
+	width: 50%;
 	height: 50%;
 	border-radius: 20px;
-	position: absolute;
-	margin-top: 50%;
-	transform: translateY(-50%);
-	background: #fffa917d;
+	position: fixed;
+	background: #232323c4;
 	z-index: 10;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .endgame-active {
@@ -260,6 +270,7 @@ h2 {
 .highlight {
 	background: #ffffff2b;
 }
+
 .local-win {
 	background: #333;
 	z-index: 10;
