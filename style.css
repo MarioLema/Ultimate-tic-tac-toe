@@ -70,6 +70,8 @@ h2 {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	padding: 2rem;
+	height: 300px;
+	width: 300px;
 }
 
 .top-left {
@@ -112,65 +114,69 @@ h2 {
 	border-width: 1px;
 	padding: 0.5rem;
 }
+.local-box{
+	display: flex;
+}
+
+#local-0,
+#result-0 {
+	grid-column: 1/2;
+	grid-row: 1/2;
+}
 
 #local-1,
 #result-1 {
-	grid-column: 1/2;
+	grid-column: 2/3;
 	grid-row: 1/2;
 }
 
 #local-2,
 #result-2 {
-	grid-column: 2/3;
+	grid-column: 3/4;
 	grid-row: 1/2;
 }
 
 #local-3,
 #result-3 {
-	grid-column: 3/4;
-	grid-row: 1/2;
+	grid-column: 1/2;
+	grid-row: 2/3;
 }
 
 #local-4,
 #result-4 {
-	grid-column: 1/2;
+	grid-column: 2/3;
 	grid-row: 2/3;
 }
 
 #local-5,
 #result-5 {
-	grid-column: 2/3;
+	grid-column: 3/4;
 	grid-row: 2/3;
 }
 
 #local-6,
 #result-6 {
-	grid-column: 3/4;
-	grid-row: 2/3;
-}
-
-#local-7,
-#result-7 {
 	grid-column: 1/2;
 	grid-row: 3/4;
 }
 
-#local-8,
-#result-8 {
+#local-7,
+#result-7 {
 	grid-column: 2/3;
 	grid-row: 3/5;
 }
 
-#local-9,
-#result-9 {
+#local-8,
+#result-8 {
 	grid-column: 3/4;
 	grid-row: 3/5;
 }
 
 .result {
-	width: 100%;
-	height: 100%;
+	width: 300px;
+	height: 300px;
 	z-index: -1;
+	padding: 4rem;
 }
 
 .endgame {
@@ -208,6 +214,8 @@ h2 {
 	width: 100%;
 	fill: white;
 	opacity: 0.5;
+	margin: auto;
+
 }
 
 .difficulty {
@@ -246,4 +254,13 @@ h2 {
 
 .icon {
 	height: 100%;
+}
+
+.highlight {
+	background: #ffffff2b;
+}
+.local-win {
+	background: #333;
+	z-index: 10;
+	display: flex;
 }
