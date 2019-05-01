@@ -156,7 +156,7 @@ const MODIFIER = {
          return;
       }
       setTimeout(() => {
-         let mainBoardMove = DATA.openBoards.length === 0 ? DATA.openBoards[0] : DATA.openBoards[Math.floor(Math.random() * (DATA.openBoards.length - 1))];
+         let mainBoardMove = DATA.openBoards.length === 1 ? DATA.openBoards[0] : DATA.openBoards[Math.floor(Math.random() * (DATA.openBoards.length - 1))];
          this.playerMove(this.aiMove(mainBoardMove), mainBoardMove, DATA.ai);
 
          let win = this.checkWin(DATA.mainBoard, DATA.human);
